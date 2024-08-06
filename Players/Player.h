@@ -1,12 +1,37 @@
-
 #pragma once
 
+#include <memory>
 #include <string>
+#include "Job.h"
+#include "Character.h"
 
+class Character;
 using std::string;
 
 class Player {
+private:
+    string name;
+    int level;
+    int force;
+    int maxHP;
+    int currentHP;
+    int coins;
+    std::shared_ptr<Job> playerJob;
+    std::shared_ptr<Character> playerCharacter;
+
+
 public:
+     Player(const string& name, std::unique_ptr<Job> job, std::unique_ptr<Character> character);
+
+     /**
+     * Default constructor for Player class
+     */
+     Player();
+
+      /**
+     * Destructor for Player class
+     */
+     ~Player() = default;
     /**
      * Gets the description of the player
      *
@@ -48,4 +73,18 @@ public:
      * @return - coins of the player
     */
     int getCoins() const;
+
+    int getMaxHP() const;
+
+    Job* getJob() const;
+
+    Character* getCharacter() const;
+
+    void setLevel(int level);
+
+    void setCoins(int coins);
+
+    void setHP(int hp);
+
+    void setForce(int force);
 };
