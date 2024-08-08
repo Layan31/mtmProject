@@ -52,7 +52,7 @@ public:
      * @return - level of the player
     */
     int getLevel() const;
-
+ 
     /**
      * Gets the of force the player has
      *

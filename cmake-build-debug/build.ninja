@@ -51,69 +51,63 @@ build cmake_object_order_depends_target_HW4: phony || CMakeFiles/HW4.dir
 
 build CMakeFiles/HW4.dir/main.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/main.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir
 
 build CMakeFiles/HW4.dir/MatamStory.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/MatamStory.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\MatamStory.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir
 
 build CMakeFiles/HW4.dir/Utilities.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Utilities.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Utilities.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir
 
 build CMakeFiles/HW4.dir/Players/Character.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Players/Character.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Players\Character.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Players
 
 build CMakeFiles/HW4.dir/Players/Player.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Players/Player.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Players\Player.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Players
 
 build CMakeFiles/HW4.dir/Events/Event.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Events/Event.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Events\Event.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Events
 
 build CMakeFiles/HW4.dir/Events/Encounter.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Events/Encounter.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Events\Encounter.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Events
 
 build CMakeFiles/HW4.dir/Events/SpecialEvent.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Events/SpecialEvent.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Events\SpecialEvent.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Events
 
 build CMakeFiles/HW4.dir/Players/PlayerFactory.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Players/PlayerFactory.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Players\PlayerFactory.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Players
 
 build CMakeFiles/HW4.dir/Events/EventFactory.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Events/EventFactory.cpp || cmake_object_order_depends_target_HW4
   DEP_FILE = CMakeFiles\HW4.dir\Events\EventFactory.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -Wall -pedantic-errors -Werror -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\HW4.dir
   OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Events
-
-build CMakeFiles/HW4.dir/Players/Job.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug C$:/Users/layan/OneDrive/Desktop/cs/HW4/Players/Job.cpp || cmake_object_order_depends_target_HW4
-  DEP_FILE = CMakeFiles\HW4.dir\Players\Job.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\HW4.dir
-  OBJECT_FILE_DIR = CMakeFiles\HW4.dir\Players
 
 
 # =============================================================================
@@ -123,8 +117,8 @@ build CMakeFiles/HW4.dir/Players/Job.cpp.obj: CXX_COMPILER__HW4_unscanned_Debug 
 #############################################
 # Link the executable HW4.exe
 
-build HW4.exe: CXX_EXECUTABLE_LINKER__HW4_Debug CMakeFiles/HW4.dir/main.cpp.obj CMakeFiles/HW4.dir/MatamStory.cpp.obj CMakeFiles/HW4.dir/Utilities.cpp.obj CMakeFiles/HW4.dir/Players/Character.cpp.obj CMakeFiles/HW4.dir/Players/Player.cpp.obj CMakeFiles/HW4.dir/Events/Event.cpp.obj CMakeFiles/HW4.dir/Events/Encounter.cpp.obj CMakeFiles/HW4.dir/Events/SpecialEvent.cpp.obj CMakeFiles/HW4.dir/Players/PlayerFactory.cpp.obj CMakeFiles/HW4.dir/Events/EventFactory.cpp.obj CMakeFiles/HW4.dir/Players/Job.cpp.obj
-  FLAGS = -g
+build HW4.exe: CXX_EXECUTABLE_LINKER__HW4_Debug CMakeFiles/HW4.dir/main.cpp.obj CMakeFiles/HW4.dir/MatamStory.cpp.obj CMakeFiles/HW4.dir/Utilities.cpp.obj CMakeFiles/HW4.dir/Players/Character.cpp.obj CMakeFiles/HW4.dir/Players/Player.cpp.obj CMakeFiles/HW4.dir/Events/Event.cpp.obj CMakeFiles/HW4.dir/Events/Encounter.cpp.obj CMakeFiles/HW4.dir/Events/SpecialEvent.cpp.obj CMakeFiles/HW4.dir/Players/PlayerFactory.cpp.obj CMakeFiles/HW4.dir/Events/EventFactory.cpp.obj
+  FLAGS = -Wall -pedantic-errors -Werror -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\HW4.dir
   POST_BUILD = cd .

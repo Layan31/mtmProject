@@ -9,10 +9,9 @@
 #include <fstream>
 #include <sstream>
 
-using namespace std;
 #include <cctype>
 
-
+using namespace std;
 using std::string;
 using std::shared_ptr;
 using std::vector;
@@ -75,7 +74,7 @@ void getPack(const std::vector<string>& result, std::vector<string>& toadd, size
         throw InvalidEvents();
     }
 
-    toadd.push_back(result[index]); // Push "Gang"
+    toadd.push_back(result[index]); // Push "Pack"
     toadd.push_back(result[quantityIndex]); // Push quantity
 
     size_t startIndex = index + 2;
@@ -87,10 +86,10 @@ void getPack(const std::vector<string>& result, std::vector<string>& toadd, size
         }
 
         if (result[index] == "Pack") {
-            getPack(result, toadd, index); // Recursively handle nested "Gang" entries
+            getPack(result, toadd, index); // Recursively handle nested "Pack" entries
         } else {
-            if(result[index]=="Barlog" ||result[index]=="Slime" || result[index]=="Snail"){
-                toadd.push_back(result[index]); // Push individual cards
+            if(result[index]=="Barlog" || result[index]=="Slime" || result[index]=="Snail"){
+                toadd.push_back(result[index]); // Push individual events
                 index++;
             }
             else{
@@ -119,17 +118,17 @@ void MatamStory::getEvents(std::istream& eventsStream){
     }
     EventFactory factory;
     std::vector<string> toadd;
-    for(size_t i = 0 ; i < result.size() ; i++){
-        if(result[i] == "Gang"){
+    for(size_t i = 0; i < result.size(); i++){
+        if(result[i] == "Pack"){
             getPack(result,toadd,i);
             try {
                 m_events.push_back(factory.createEvent(toadd));
                 i--;
                 toadd.clear();
             }
-            catch(const InvalidEvents& e){
+            catch(const InvalidEvents&){
                 // cout<<"error\n";
-                throw e;
+                throw;
             }
 
         }
@@ -216,7 +215,7 @@ void MatamStory::playRound() {
     printRoundStart();
 
     /*===== TODO: Play a turn for each player =====*/
-    for(int i = 0; i < m_players.size(); ++i) {
+    for(int i = 0; i < (int)m_players.size(); ++i) {
         if(m_players[i]->getHealthPoints() > 0) {
             playTurn(*m_players[i]);
         }
@@ -229,7 +228,7 @@ void MatamStory::playRound() {
     printLeaderBoardMessage();
 
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
-    for(int i = 0; i < m_players.size(); ++i) {
+    for(int i = 0; i < (int)m_players.size(); ++i) {
         printLeaderBoardEntry(i + 1, *m_players[i]); //WRONG!!! it should be according to levels
     }
     /*=======================================================================================*/
@@ -239,7 +238,7 @@ void MatamStory::playRound() {
 
 bool MatamStory::isGameOver() const {
     /*===== TODO: Implement the game over condition =====*/
-    for(int i = 0; i < m_players.size(); ++i) {
+    for(int i = 0; i < (int)m_players.size(); ++i) {
         if(m_players[i]->getLevel() == 10) {
             return true;
         }
@@ -254,7 +253,7 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
-    for(int i = 0; i < m_players.size(); ++i) {
+    for(int i = 0; i < (int)m_players.size(); ++i) {
         printStartPlayerEntry(i + 1, *m_players[i]);
     }
     /*=========================================================================================*/
@@ -266,7 +265,13 @@ void MatamStory::play() {
 
     printGameOver();
     /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-
+    for(int i = 0; i < (int)m_players.size(); ++i) {
+        if(m_players[i]->getLevel() == 10) {
+            printWinner(*m_players[i]);
+            return;
+        }
+    }
+    printNoWinners();
 
     /*========================================================================*/
 }

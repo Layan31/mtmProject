@@ -13,7 +13,7 @@ public:
 
 class InvalidEvents : public std::exception{
     const char* what() const noexcept override {
-        return "Invalid Cards File";
+        return "Invalid Events File";
     }
 };
 

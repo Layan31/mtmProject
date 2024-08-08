@@ -10,6 +10,7 @@
 #include "Players/Player.h"
 #include "Events/Event.h"
 
+class Player;
 
 class MatamStory{
 private:

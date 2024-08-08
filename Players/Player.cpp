@@ -21,27 +21,27 @@ string Player::getDescription() const {
 }
 
 string Player::getName() const {
-    return name;
+    return this->name;
 }
 
 int Player::getLevel() const {
-    return level;
+    return this->level;
 }
 
 int Player::getForce() const {
-    return force;
+    return this->force;
 }
 
 int Player::getHealthPoints() const {
-    return currentHP;
+    return this->currentHP;
 }
 
 int Player::getMaxHP() const {
-    return maxHP;
+    return this->maxHP;
 }
 
 int Player::getCoins() const {
-    return coins;
+    return this->coins;
 }
 
 Job* Player::getJob() const {

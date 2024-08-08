@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "../Utilities.h"
-
+#include "Event.h"
 
 using std::string;
 class Event;
