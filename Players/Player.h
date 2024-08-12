@@ -9,17 +9,6 @@ class Character;
 using std::string;
 
 class Player {
-private:
-    string name;
-    int level;
-    int force;
-    int maxHP;
-    int currentHP;
-    int coins;
-    std::shared_ptr<Job> playerJob;
-    std::shared_ptr<Character> playerCharacter;
-
-
 public:
      Player(const string& name, std::unique_ptr<Job> job, std::unique_ptr<Character> character);
 
@@ -87,4 +76,14 @@ public:
     void setHP(int hp);
 
     void setForce(int force);
+
+private:
+ string name;
+ int level;
+ int force;
+ int maxHP;
+ int currentHP;
+ int coins;
+ std::shared_ptr<Job> playerJob;
+ std::shared_ptr<Character> playerCharacter;
 };
