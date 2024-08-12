@@ -7,15 +7,21 @@ string Encounter::getDescription() const {
 }
 
 string Encounter::playTurn(Player& player) {
-    unsigned int playerCP = player.getForce() + player.getLevel();
-    if (player.getJob()->getCloseEncounter()) {
-        player.setHP(std::max(0, player.getHealthPoints() - 10));
-    }
+    unsigned int playerCP = player.getForce() * 2 + player.getLevel();
     if (playerCP > this->combatPower) {
+        if(eventName == "Balrog") {
+            combatPower += 2;
+        }
         player.setLevel(player.getLevel() + 1);
-        player.setCoins(player.getCoins() + this->loot);
+        player.setCoins(player.getCoins() + (int)this->loot);
+        if (player.getJob()->getCloseEncounter()) {
+            player.setHP(std::max(0, player.getHealthPoints() - 10));
+        }
         return getEncounterWonMessage(player, this->loot);
     } else {
+        if(eventName == "Balrog") {
+            combatPower += 2;
+        }
         player.setHP(std::max(0, (int)(player.getHealthPoints() - this->damage)));
         return getEncounterLostMessage(player, this->damage);
     }

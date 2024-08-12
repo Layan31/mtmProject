@@ -15,7 +15,7 @@ public:
 
 class SolarEclips : public SpecialEvent {
 public:
-    SolarEclips() : SpecialEvent("SolarEclips") {}
+    SolarEclips() : SpecialEvent("SolarEclipse") {}
 
     string playTurn(Player& player) override;
 

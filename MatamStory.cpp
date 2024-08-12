@@ -7,174 +7,201 @@
 #include <vector>
 #include <queue>
 #include <fstream>
-#include <sstream>
-
-#include <cctype>
-
-using namespace std;
 using std::string;
 using std::shared_ptr;
 using std::vector;
 using std::queue;
 
-bool checkValidation(const string& s){
-    for(char c : s){
-        char lower = tolower(c);
-        if(!isalpha(lower)){
+bool checkValidation(const std::string& str) {
+    for (size_t i = 0; i < str.length(); ++i) {
+        char currentChar = str[i];
+        char lowerChar = std::tolower(currentChar);
+
+        if (!std::isalpha(lowerChar)) {
             return false;
         }
     }
     return true;
 }
 
-std::vector<string> splitString(const string& str) {
-    std::vector<string> tokens;
-    istringstream iss(str);
-    string token;
-    while (iss >> token) {
-        tokens.push_back(token);
+
+#include <vector>
+#include <string>
+
+std::vector<std::string> splitString(const std::string& str) {
+    std::vector<std::string> tokens;
+    std::string currentToken;
+
+    for (char ch : str) {
+        // Check for whitespace characters manually
+        if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r' || ch == '\f' || ch == '\v') {
+            if (!currentToken.empty()) {
+                tokens.push_back(currentToken);
+                currentToken.clear();
+            }
+        } else {
+            currentToken += ch;
+        }
     }
+
+    // Add the last token if there is one
+    if (!currentToken.empty()) {
+        tokens.push_back(currentToken);
+    }
+
     return tokens;
 }
 
 
-bool comparePlayers(const shared_ptr<Player>& player1, const shared_ptr<Player>& player2) {
-    // Compare by level
-    if (player1->getLevel() != player2->getLevel()) {
-        return player1->getLevel() > player2->getLevel(); // Higher level comes first
+bool comparePlayers(const std::shared_ptr<Player>& p1, const std::shared_ptr<Player>& p2) {
+    // Compare levels first
+    int level1 = p1->getLevel();
+    int level2 = p2->getLevel();
+    if (level1 != level2) {
+        return level1 > level2; // Higher level first
     }
 
-    // Compare by number of coins
-    if (player1->getCoins() != player2->getCoins()) {
-        return player1->getCoins() > player2->getCoins(); // More coins come first
+    // Compare coins next
+    int coins1 = p1->getCoins();
+    int coins2 = p2->getCoins();
+    if (coins1 != coins2) {
+        return coins1 > coins2; // More coins first
     }
 
-    // Compare by name lexicographically
-    return player1->getName() < player2->getName(); // Lexicographically smaller name comes first
+    // Finally, compare names lexicographically
+    const std::string& name1 = p1->getName();
+    const std::string& name2 = p2->getName();
+    return name1 < name2; // Lexicographically smaller name first
 }
 
 
 
-void getPack(const std::vector<string>& result, std::vector<string>& toadd, size_t& index) {
-    if (index >= result.size()) {
+void getPack(const std::vector<std::string>& source, std::vector<std::string>& destination, size_t& currentIndex) {
+    // Check if the index is out of bounds
+    if (currentIndex >= source.size()) {
         throw InvalidEvents();
     }
 
-    if (result[index] != "Pack") {
+    // Check if the current element is "Pack"
+    std::string firstElement = source[currentIndex];
+    if (firstElement != "Pack") {
         throw InvalidEvents();
     }
 
-    size_t quantityIndex = index + 1;
-    if (quantityIndex >= result.size()) {
+    size_t quantityIdx = currentIndex + 1;
+    if (quantityIdx >= source.size()) {
         throw InvalidEvents();
     }
 
-    int quantity = stoi(result[quantityIndex]);
-    if (quantity <= 0) {
+    // Get the quantity and validate it
+    int packQuantity = std::stoi(source[quantityIdx]);
+    if (packQuantity <= 0) {
         throw InvalidEvents();
     }
 
-    toadd.push_back(result[index]); // Push "Pack"
-    toadd.push_back(result[quantityIndex]); // Push quantity
+    // Add "Pack" and its quantity to the destination vector
+    destination.push_back(firstElement);
+    destination.push_back(source[quantityIdx]);
 
-    size_t startIndex = index + 2;
-    index = startIndex;
+    size_t startingIdx = currentIndex + 2;
+    currentIndex = startingIdx;
 
-    while (quantity > 0) {
-        if (index >= result.size()) {
+    while (packQuantity > 0) {
+        if (currentIndex >= source.size()) {
             throw InvalidEvents();
         }
 
-        if (result[index] == "Pack") {
-            getPack(result, toadd, index); // Recursively handle nested "Pack" entries
+        std::string currentElement = source[currentIndex];
+        if (currentElement == "Pack") {
+            getPack(source, destination, currentIndex);// Recursively handle nested "Pack" entries
         } else {
-            if(result[index]=="Barlog" || result[index]=="Slime" || result[index]=="Snail"){
-                toadd.push_back(result[index]); // Push individual events
-                index++;
-            }
-            else{
+            if (currentElement == "Barlog" || currentElement == "Slime" || currentElement == "Snail") {
+                destination.push_back(currentElement); // Add the event to the destination
+                currentIndex++;
+            } else {
                 throw InvalidEvents();
             }
-
         }
-        quantity--;
+        packQuantity--;
     }
 }
 
-void MatamStory::getEvents(std::istream& eventsStream){
-   /* ifstream file(Eventspath);
-    if(!file.is_open()){
-        //need to do somthing
-        return;
-    }*/
+void MatamStory::getEvents(std::istream& eventsStream) {
     std::vector<std::string> result;
-    string line;
-    while (getline(eventsStream, line)) {
+    std::string line;
+
+    // Read all lines from the stream and split into tokens
+    while (std::getline(eventsStream, line)) {
         std::vector<std::string> tokens = splitString(line);
         result.insert(result.end(), tokens.begin(), tokens.end());
     }
-    if(result.empty()){
+
+    if (result.empty()) {
         throw InvalidEvents();
     }
+
     EventFactory factory;
-    std::vector<string> toadd;
-    for(size_t i = 0; i < result.size(); i++){
-        if(result[i] == "Pack"){
-            getPack(result,toadd,i);
+    std::vector<std::string> temp;
+    size_t index = 0;
+
+    while (index < result.size()) {
+        if (result[index] == "Pack") {
+            // Handle the Pack event
+            getPack(result, temp, index);
             try {
-                m_events.push_back(factory.createEvent(toadd));
-                i--;
-                toadd.clear();
-            }
-            catch(const InvalidEvents&){
-                // cout<<"error\n";
+                eventsSet.push_back(factory.createEvent(temp));
+                temp.clear();
+                --index; // Adjust index for the next iteration
+            } catch (const InvalidEvents&) {
                 throw;
             }
-
-        }
-        else{
-            toadd = {result[i]};
-            try{
-                m_events.push_back(factory.createEvent(toadd));
-                toadd.clear();
-            }
-            catch(const InvalidEvents& e){
-                // cout<<"error\n";
-                throw e;
+        } else {
+            temp.assign(1, result[index]);
+            try {
+                eventsSet.push_back(factory.createEvent(temp));
+                temp.clear();
+            } catch (const InvalidEvents&) {
+                throw;
             }
         }
+        ++index; // Move to the next item
     }
-    if(m_events.size() < 2){
+
+    if (eventsSet.size() < 2) {
         throw InvalidEvents();
     }
 }
-void MatamStory::getPlayers(std::istream& playersStream){
-  /*  ifstream file(playersPath);
-    if(!file.is_open()){
-        return;
-    }*/
-    std::vector<std::string> result;
-    string line;
+void MatamStory::getPlayers(std::istream& playersStream) {
+    std::vector<std::string> tokens;
+    std::string line;
     PlayerFactory factory;
-    while (getline(playersStream, line)) {
-        std::vector<std::string> tokens = splitString(line);
-        if(tokens.size() == 3){
-            if(!checkValidation(tokens[0])){
+
+    while (std::getline(playersStream, line)) {
+        tokens.clear(); // Clear tokens vector for each line
+        std::vector<std::string> tempTokens = splitString(line);
+        if (tempTokens.size() == 3) {
+            bool isValid = checkValidation(tempTokens[0]);
+            if (!isValid) {
                 throw InvalidPlayers();
             }
-            m_players.push_back(factory.createPlayer(tokens[0],tokens[1],tokens[2]));
-        }
-        else{
+
+            // Create player using a temporary shared_ptr
+            std::shared_ptr<Player> tempPlayer = factory.createPlayer(tempTokens[0],
+                tempTokens[1], tempTokens[2]);
+            playersSet.push_back(tempPlayer);
+            playersSortedSet.push_back(tempPlayer);
+        } else {
             throw InvalidPlayers();
         }
-        // result.insert(result.end(), tokens.begin(), tokens.end());
     }
-    if(m_players.size() > 6 || m_players.size()  < 2){
+
+    size_t playerCount = playersSet.size();
+    if (playerCount > 6 || playerCount < 2) {
         throw InvalidPlayers();
     }
-
-
 }
+
+
 MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) {
 
     /*===== TODO: Open and read events file =====*/
@@ -199,8 +226,8 @@ void MatamStory::playTurn(Player& player) {
      * 3. Play the event
      * 4. Print the turn outcome with "printTurnOutcome"
     */
-    shared_ptr<Event> curEvent = m_events[m_turnIndex % m_events.size()];
-    printTurnDetails(m_turnIndex, player, *curEvent);
+    shared_ptr<Event> curEvent = eventsSet[m_turnIndex % eventsSet.size()];
+    printTurnDetails(m_turnIndex + 1, player, *curEvent);
     //Playing the Event:
     string outcomeMessage = (*curEvent).playTurn(player);
     printTurnOutcome(outcomeMessage);
@@ -215,21 +242,21 @@ void MatamStory::playRound() {
     printRoundStart();
 
     /*===== TODO: Play a turn for each player =====*/
-    for(int i = 0; i < (int)m_players.size(); ++i) {
-        if(m_players[i]->getHealthPoints() > 0) {
-            playTurn(*m_players[i]);
+    for(int i = 0; i < (int)playersSet.size(); ++i) {
+        if(playersSet[i]->getHealthPoints() > 0) {
+            playTurn(*playersSet[i]);
         }
     }
     /*=============================================*/
 
-    sort(m_players.begin(),m_players.end(),comparePlayers);
+    sort(playersSortedSet.begin(),playersSortedSet.end(),comparePlayers);
     printRoundEnd();
 
     printLeaderBoardMessage();
 
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
-    for(int i = 0; i < (int)m_players.size(); ++i) {
-        printLeaderBoardEntry(i + 1, *m_players[i]); //WRONG!!! it should be according to levels
+    for(int i = 0; i < (int)playersSortedSet.size(); ++i) {
+        printLeaderBoardEntry(i + 1, *playersSortedSet[i]); //WRONG!!! it should be according to levels
     }
     /*=======================================================================================*/
 
@@ -238,11 +265,11 @@ void MatamStory::playRound() {
 
 bool MatamStory::isGameOver() const {
     /*===== TODO: Implement the game over condition =====*/
-    for(int i = 0; i < (int)m_players.size(); ++i) {
-        if(m_players[i]->getLevel() == 10) {
+    for(int i = 0; i < (int)playersSet.size(); ++i) {
+        if(playersSet[i]->getLevel() == 10) {
             return true;
         }
-        if(m_players[i]->getHealthPoints() != 0) {
+        if(playersSet[i]->getHealthPoints() != 0) {
             return false;
         }
     }
@@ -251,10 +278,11 @@ bool MatamStory::isGameOver() const {
 }
 
 void MatamStory::play() {
+    m_turnIndex = 0;
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
-    for(int i = 0; i < (int)m_players.size(); ++i) {
-        printStartPlayerEntry(i + 1, *m_players[i]);
+    for(int i = 0; i < (int)playersSet.size(); ++i) {
+        printStartPlayerEntry(i + 1, *playersSet[i]);
     }
     /*=========================================================================================*/
     printBarrier();
@@ -265,9 +293,9 @@ void MatamStory::play() {
 
     printGameOver();
     /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-    for(int i = 0; i < (int)m_players.size(); ++i) {
-        if(m_players[i]->getLevel() == 10) {
-            printWinner(*m_players[i]);
+    for(int i = 0; i < (int)playersSortedSet.size(); ++i) {
+        if(playersSortedSet[i]->getLevel() == 10) {
+            printWinner(*playersSortedSet[i]);
             return;
         }
     }

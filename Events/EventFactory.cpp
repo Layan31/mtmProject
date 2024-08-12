@@ -4,45 +4,46 @@
 #include "SpecialEvent.h"
 #include "Event.h"
 #include "Encounter.h"
-#include <memory>
 #include <vector>
 
-std::shared_ptr<Event> EventFactory::createEvent(const std::vector<string>& line) {
+std::shared_ptr<Event> EventFactory::createEvent(const std::vector<std::string>& inputLines) {
+    // Check if the event type is Pack
+    if (inputLines[0] == "Pack") {
+        int quantity = std::stoi(inputLines[1]);
+        std::vector<Encounter> encounters;
 
-    if(line[0] == "Pack"){
-        int amount = stoi(line[1]);
-        std::vector<Encounter> pack1;
-        for(size_t i = 2; i < line.size() ; i++){
-            if(line[i]=="Balrog"){
-                pack1.push_back(Balrog());
-            }
-            else if(line[i] == "Slime"){
-                pack1.push_back(Slime());
-            }
-            else if(line[i] == "Snail"){
-                pack1.push_back(Snail());
+        // Create encounters based on the input provided
+        for (size_t index = 2; index < inputLines.size(); ++index) {
+            const auto& creature = inputLines[index];
+            if (creature == "Balrog") {
+                encounters.emplace_back(Balrog());
+            } else if (creature == "Slime") {
+                encounters.emplace_back(Slime());
+            } else if (creature == "Snail") {
+                encounters.emplace_back(Snail());
             }
         }
 
-        return std::make_shared<Pack>(pack1, amount);
-    }
-    else if(line[0] == "Balrog"){
-        return std::make_shared<Balrog>();
-    }
-    else if(line[0] == "Snail"){
-        return std::make_shared<Snail>();
-    }
-    else if(line[0] == "Slime"){
-        return std::make_shared<Slime>();
-    }
-    else if(line[0] == "SolarEclips"){
-        return std::make_shared<SolarEclips>();
-    }
-    else if(line[0] == "PotionsMerchant"){
-        return std::make_shared<PotionsMerchant>();
-    }
-    else{
-        throw InvalidEvents();
+        return std::make_shared<Pack>(encounters, quantity);
     }
 
+    // Create specific event types based on the input
+    if (inputLines[0] == "Balrog") {
+        return std::make_shared<Balrog>();
+    }
+    if (inputLines[0] == "Snail") {
+        return std::make_shared<Snail>();
+    }
+    if (inputLines[0] == "Slime") {
+        return std::make_shared<Slime>();
+    }
+    if (inputLines[0] == "SolarEclipse") {
+        return std::make_shared<SolarEclips>();
+    }
+    if (inputLines[0] == "PotionsMerchant") {
+        return std::make_shared<PotionsMerchant>();
+    }
+
+    // Throw an exception for invalid event types
+    throw InvalidEvents();
 }

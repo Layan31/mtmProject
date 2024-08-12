@@ -1,48 +1,37 @@
 #include "PlayerFactory.h"
-
 #include <memory>
 
-std::shared_ptr<Player> PlayerFactory::createPlayer(const string& name,
-                                                    const string& job,const string& behaviour){
-    if(name.size() > 15 || name.size() < 3){
+std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& playerName,
+                    const std::string& playerJob, const std::string& playerBehavior) {
+    // Validate player name length
+    if (playerName.length() < 3 || playerName.length() > 15) {
         throw InvalidPlayers();
     }
 
-    if(job == "Warrior"){
-        if(behaviour == "RiskTaking"){
-            return std::make_shared<Player>(name, std::make_unique<Warrior>(),
-                std::make_unique<RiskTaking>());
-        }
-        if ( behaviour == "Responsible") {
-            return std::make_shared<Player>(name, std::make_unique<Warrior>(),
-                std::make_unique<Responsible>());
-        }
+    // Define unique pointers for Job and Behavior
+    std::unique_ptr<Job> jobPtr;
+    std::unique_ptr<Character> characterPtr;
 
+    // Determine the job type
+    if (playerJob == "Warrior") {
+        jobPtr = std::make_unique<Warrior>();
+    } else if (playerJob == "Archer") {
+        jobPtr = std::make_unique<Archer>();
+    } else if (playerJob == "Magician") {
+        jobPtr = std::make_unique<Magician>();
+    } else {
         throw InvalidPlayers();
     }
-    if(job == "Archer"){
-        if(behaviour == "RiskTaking"){
-            return std::make_shared<Player>(name, std::make_unique<Archer>(),
-                std::make_unique<RiskTaking>());
-        }
-        if ( behaviour == "Responsible") {
-            return std::make_shared<Player>(name, std::make_unique<Archer>(),
-                std::make_unique<Responsible>());
-        }
 
+    // Determine the character type
+    if (playerBehavior == "RiskTaking") {
+        characterPtr = std::make_unique<RiskTaking>();
+    } else if (playerBehavior == "Responsible") {
+        characterPtr = std::make_unique<Responsible>();
+    } else {
         throw InvalidPlayers();
     }
-    if(job == "Magician"){
-        if(behaviour == "RiskTaking"){
-            return std::make_shared<Player>(name, std::make_unique<Magician>(),
-                std::make_unique<RiskTaking>());
-        }
-        if ( behaviour == "Responsible") {
-            return std::make_shared<Player>(name, std::make_unique<Magician>(),
-                std::make_unique<Responsible>());
-        }
 
-        throw InvalidPlayers();
-    }
-    throw InvalidPlayers();
+    // Create and return the Player object
+    return std::make_shared<Player>(playerName, std::move(jobPtr), std::move(characterPtr));
 }

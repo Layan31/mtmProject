@@ -3,21 +3,24 @@
 #include "Character.h"
 
 Player::Player(const string& name, std::unique_ptr<Job> job, std::unique_ptr<Character> character)
-    : name(name), playerJob(std::move(job)), playerCharacter(std::move(character)) {
-    // Initialize player attributes
+    : name(name), level(1), force(5), maxHP(100), currentHP(maxHP), coins(10),
+            playerJob(std::move(job)), playerCharacter(std::move(character)) {
+    if(playerJob->getJobName() == "Warrior") {
+        maxHP = 150;
+        currentHP = maxHP;
+    } else if(playerJob->getJobName() == "Archer") {
+        coins = 20;
+    }
 }
 
-Player::Player() : name("Unnamed"), level(1), force(5), maxHP(100), currentHP(maxHP), coins(10) {
-    // Default constructor
-}
 
 string Player::getDescription() const {
     // Ensure playerJob and playerCharacter are not null before dereferencing
-    string jobName = playerJob ? playerJob->getJobName() : "Unknown";
-    string charType = playerCharacter ? playerCharacter->getCharacterType() : "Unknown";
+    string jobName = playerJob->getJobName();
+    string charType = playerCharacter->getCharacterType();
 
     return name + ", " + jobName + " with " + charType +
-           " level " + std::to_string(level) + ", force " + std::to_string(force) + ")";
+        " character (level " + std::to_string(level) + ", force " + std::to_string(force) + ")";
 }
 
 string Player::getName() const {

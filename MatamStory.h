@@ -15,8 +15,10 @@ class Player;
 class MatamStory{
 private:
     unsigned int m_turnIndex;
-    std::deque<std::shared_ptr<Event>> m_events;
-    std::vector<std::shared_ptr<Player>> m_players;
+    std::deque<std::shared_ptr<Event>> eventsSet;
+    std::vector<std::shared_ptr<Player>> playersSet;
+    std::vector<std::shared_ptr<Player>> playersSortedSet;
+
     /**
      * Playes a single turn for a player
      *
