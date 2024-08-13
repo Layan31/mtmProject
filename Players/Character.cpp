@@ -1,5 +1,5 @@
 #include "Character.h"
-#include <algorithm> // For std::min
+#include <algorithm> //For std::min
 
 Character::~Character() = default;
 
