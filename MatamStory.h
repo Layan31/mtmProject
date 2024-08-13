@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <iostream>
@@ -13,35 +12,6 @@
 class Player;
 
 class MatamStory{
-private:
-    unsigned int m_turnIndex;
-    std::deque<std::shared_ptr<Event>> eventsSet;
-    std::vector<std::shared_ptr<Player>> playersSet;
-    std::vector<std::shared_ptr<Player>> playersSortedSet;
-
-    /**
-     * Playes a single turn for a player
-     *
-     * @param player - the player to play the turn for
-     *
-     * @return - void
-    */
-    void playTurn(Player& player);
-
-    /**
-     * Plays a single round of the game
-     *
-     * @return - void
-    */
-    void playRound();
-
-    /**
-     * Checks if the game is over
-     *
-     * @return - true if the game is over, false otherwise
-    */
-    bool isGameOver() const;
-
 public:
     /**
      * Constructor of MatamStory class
@@ -64,6 +34,35 @@ public:
     void getEvents(std::istream& eventsStream);
     void getPlayers(std::istream& playersStream);
 
+
+private:
+    unsigned int m_turnIndex;
+    std::deque<std::shared_ptr<Event>> eventsSet;
+    std::vector<std::shared_ptr<Player>> playersSet;
+    std::vector<std::shared_ptr<Player>> playersSortedSet;
+
+  /**
+     * Playes a single turn for a player
+     *
+     * @param player - the player to play the turn for
+     *
+     * @return - void
+    */
+    void playTurn(Player& player);
+
+ /**
+  * Plays a single round of the game
+  *
+  * @return - void
+ */
+    void playRound();
+
+ /**
+  * Checks if the game is over
+  *
+  * @return - true if the game is over, false otherwise
+ */
+    bool isGameOver() const;
 
 
 };
