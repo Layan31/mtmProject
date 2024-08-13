@@ -15,7 +15,6 @@ Player::Player(const string& name, std::unique_ptr<Job> job, std::unique_ptr<Cha
 
 
 string Player::getDescription() const {
-    // Ensure playerJob and playerCharacter are not null before dereferencing
     string jobName = playerJob->getJobName();
     string charType = playerCharacter->getCharacterType();
 
