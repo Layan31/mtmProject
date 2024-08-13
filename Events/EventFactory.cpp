@@ -1,5 +1,4 @@
 #include "EventFactory.h"
-
 #include <memory>
 #include "SpecialEvent.h"
 #include "Event.h"
