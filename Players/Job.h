@@ -2,10 +2,6 @@
 #include <string>
 
 class Job {
-protected:
-    bool closeEncounter = false;
-    bool isMagical = false;
-
 public:
     bool getCloseEncounter() const {
         return closeEncounter;
@@ -18,6 +14,11 @@ public:
     virtual ~Job() = default;
 
     virtual std::string getJobName() const = 0;
+
+protected:
+    bool closeEncounter = false;
+    bool isMagical = false;
+
 };
 
 class Magician : public Job {
