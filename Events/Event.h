@@ -3,12 +3,6 @@
 #include "../Players/Player.h"
 
 class Event {
-protected:
-    string eventName;
-    unsigned int combatPower;
-    unsigned int loot;
-    unsigned int damage;
-
 public:
     /**
      * Gets the description of the event
@@ -29,4 +23,9 @@ public:
     unsigned int getLoot() const { return loot; }
     unsigned int getDamage() const { return damage; }
 
+protected:
+    string eventName;
+    unsigned int combatPower;
+    unsigned int loot;
+    unsigned int damage;
 };
