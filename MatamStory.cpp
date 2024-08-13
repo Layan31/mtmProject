@@ -256,7 +256,7 @@ void MatamStory::playRound() {
 
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
     for(int i = 0; i < (int)playersSortedSet.size(); ++i) {
-        printLeaderBoardEntry(i + 1, *playersSortedSet[i]); //WRONG!!! it should be according to levels
+        printLeaderBoardEntry(i + 1, *playersSortedSet[i]);
     }
     /*=======================================================================================*/
 
