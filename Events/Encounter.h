@@ -12,7 +12,7 @@ class Event;
 class Encounter : public Event {
 
 public:
-    Encounter(const string& name = "", int loot = 0, int combatPower = 0,int damage = 0):
+    Encounter(const string& name = "", int loot = 0, int combatPower = 0, int damage = 0):
                 Event(name,loot,combatPower,damage){}
 
 
@@ -43,29 +43,28 @@ public:
 };
 
 class Pack : public Encounter {
-private:
-    int pack_size;
-    std::vector<Encounter> encounters;
-
 public:
 
-    Pack(const std::vector<Encounter>& pack1,int amount) {
+    Pack(const std::vector<Encounter>& pack1, int amount) {
         pack_size = amount;
         unsigned int sumForce = 0;
-        unsigned int sumLoot=0;
-        unsigned int sumDamage=0;
+        unsigned int sumLoot = 0;
+        unsigned int sumDamage = 0;
         for(const Encounter& b : pack1){
-            sumForce+=b.getCombatPower();
-            sumLoot+=b.getLoot();
-            sumDamage+=b.getDamage();
+            sumForce += b.getCombatPower();
+            sumLoot += b.getLoot();
+            sumDamage += b.getDamage();
         }
-        loot=sumLoot;
-        combatPower=sumForce;
-        damage= sumDamage;
+        loot = sumLoot;
+        combatPower = sumForce;
+        damage = sumDamage;
         encounters = pack1;
     }
 
 
     string getDescription() const override;
 
+private:
+    int pack_size;
+    std::vector<Encounter> encounters;
 };
