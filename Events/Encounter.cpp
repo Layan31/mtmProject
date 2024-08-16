@@ -7,8 +7,13 @@ string Encounter::getDescription() const {
 }
 
 string Encounter::playTurn(Player& player) {
-    unsigned int playerCP = player.getForce() * 2 + player.getLevel();
-    if (playerCP > this->combatPower) {
+    unsigned int playerCP;
+    if(player.getJob()->getJobName() == "Warrior") {
+        playerCP = player.getForce() * 2 + player.getLevel();
+    } else {
+        playerCP = player.getForce() + player.getLevel();
+    }
+    if (playerCP >= this->combatPower) {
         if(eventName == "Balrog") {
             combatPower += 2;
         }
