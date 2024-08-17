@@ -15,7 +15,7 @@ using std::queue;
 bool checkValidation(const std::string& str) {
     for (size_t i = 0; i < str.length(); ++i) {
         char currentChar = str[i];
-        char lowerChar = std::tolower(currentChar);
+        char lowerChar = char(std::tolower(currentChar));
 
         if (!std::isalpha(lowerChar)) {
             return false;
@@ -76,7 +76,8 @@ bool comparePlayers(const std::shared_ptr<Player>& p1, const std::shared_ptr<Pla
 
 
 
-void getPack(const std::vector<std::string>& source, std::vector<std::string>& destination, size_t& currentIndex) {
+void getPack(const std::vector<std::string>& source, std::vector<std::string>& destination,
+             size_t& currentIndex) {
     // Check if the index is out of bounds
     if (currentIndex >= source.size()) {
         throw InvalidEvents();
@@ -103,8 +104,7 @@ void getPack(const std::vector<std::string>& source, std::vector<std::string>& d
     destination.push_back(firstElement);
     destination.push_back(source[quantityIdx]);
 
-    size_t startingIdx = currentIndex + 2;
-    currentIndex = startingIdx;
+    currentIndex = quantityIdx + 1; // Move past "Pack" and quantity
 
     while (packQuantity > 0) {
         if (currentIndex >= source.size()) {
@@ -113,16 +113,14 @@ void getPack(const std::vector<std::string>& source, std::vector<std::string>& d
 
         std::string currentElement = source[currentIndex];
         if (currentElement == "Pack") {
-            getPack(source, destination, currentIndex);// Recursively handle nested "Pack" entries
+            getPack(source, destination, currentIndex); // Recursively handle nested "Pack" entries
+        } else if (currentElement == "Balrog" || currentElement == "Slime" || currentElement == "Snail") {
+            destination.push_back(currentElement); // Add the event to the destination
+            ++currentIndex;
         } else {
-            if (currentElement == "Barlog" || currentElement == "Slime" || currentElement == "Snail") {
-                destination.push_back(currentElement); // Add the event to the destination
-                currentIndex++;
-            } else {
-                throw InvalidEvents();
-            }
+            throw InvalidEvents();
         }
-        packQuantity--;
+        --packQuantity; // Decrement the remaining number of events in this pack
     }
 }
 
@@ -151,7 +149,6 @@ void MatamStory::getEvents(std::istream& eventsStream) {
             try {
                 eventsSet.push_back(factory.createEvent(temp));
                 temp.clear();
-                --index; // Adjust index for the next iteration
             } catch (const InvalidEvents&) {
                 throw;
             }
@@ -163,36 +160,42 @@ void MatamStory::getEvents(std::istream& eventsStream) {
             } catch (const InvalidEvents&) {
                 throw;
             }
+            ++index; // Move to the next item after processing the current event
         }
-        ++index; // Move to the next item
     }
 
     if (eventsSet.size() < 2) {
         throw InvalidEvents();
     }
 }
+
 void MatamStory::getPlayers(std::istream& playersStream) {
     std::vector<std::string> tokens;
     std::string line;
     PlayerFactory factory;
 
+    // Read the entire stream line by line and concatenate all lines into a single string
     while (std::getline(playersStream, line)) {
-        tokens.clear(); // Clear tokens vector for each line
-        std::vector<std::string> tempTokens = splitString(line);
-        if (tempTokens.size() == 3) {
-            bool isValid = checkValidation(tempTokens[0]);
-            if (!isValid) {
-                throw InvalidPlayers();
-            }
+        std::vector<std::string> lineTokens = splitString(line);
+        tokens.insert(tokens.end(), lineTokens.begin(), lineTokens.end());
+    }
 
-            // Create player using a temporary shared_ptr
-            std::shared_ptr<Player> tempPlayer = factory.createPlayer(tempTokens[0],
-                tempTokens[1], tempTokens[2]);
-            playersSet.push_back(tempPlayer);
-            playersSortedSet.push_back(tempPlayer);
-        } else {
+    // Check if the number of tokens is a multiple of 3
+    if (tokens.size() % 3 != 0) {
+        throw InvalidPlayers();
+    }
+
+    for (size_t i = 0; i < tokens.size(); i += 3) {
+        bool isValid = checkValidation(tokens[i]);
+        if (!isValid) {
             throw InvalidPlayers();
         }
+
+        // Create player using a temporary shared_ptr
+        std::shared_ptr<Player> tempPlayer = factory.createPlayer(tokens[i],
+            tokens[i+1], tokens[i+2]);
+        playersSet.push_back(tempPlayer);
+        playersSortedSet.push_back(tempPlayer);
     }
 
     size_t playerCount = playersSet.size();
@@ -200,7 +203,6 @@ void MatamStory::getPlayers(std::istream& playersStream) {
         throw InvalidPlayers();
     }
 }
-
 
 MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) {
 

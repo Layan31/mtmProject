@@ -13,7 +13,7 @@ string Encounter::playTurn(Player& player) {
     } else {
         playerCP = player.getForce() + player.getLevel();
     }
-    if (playerCP >= this->combatPower) {
+    if (playerCP > this->combatPower) {
         if(eventName == "Balrog") {
             combatPower += 2;
         }
