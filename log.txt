@@ -1,0 +1,546 @@
+* commit c4d659b7a3492ab1573726312d7eece34026523b
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Sat Aug 17 22:43:34 2024 +0300
+| 
+|     correcting max length of each line
+| 
+|  MatamStory.cpp | 5 +++--
+|  1 file changed, 3 insertions(+), 2 deletions(-)
+| 
+* commit 676ece3c02e6d3554e465beb0bb7c208e9695e2c
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Sat Aug 17 22:42:23 2024 +0300
+| 
+|     correcting createPayer
+| 
+|  Players/PlayerFactory.cpp | 41 +++++++++++++++++++++++------------------
+|  1 file changed, 23 insertions(+), 18 deletions(-)
+| 
+* commit 42ea4274d4e8a706ffdab3183339f8154888f19e
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Sat Aug 17 22:41:50 2024 +0300
+| 
+|     correcting createEvent
+| 
+|  Events/EventFactory.cpp | 51 +++++++++++++++++++++++++++--------------------
+|  1 file changed, 29 insertions(+), 22 deletions(-)
+| 
+* commit 5befbb1083375a2cf68852a804aa50039516b65a
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Sat Aug 17 21:51:39 2024 +0300
+| 
+|     correcting the getPack fucntion
+| 
+|  Events/Encounter.cpp                              |   2 +-
+|  MatamStory.cpp                                    |  58 ++++++++++----------
+|  MatamStoryTest                                    | Bin 1400744 -> 1400800 bytes
+|  TechnionMatam                                     |   2 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 96156 -> 103776 bytes
+|  cmake-build-debug/.ninja_log                      |  20 +++++++
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160686 -> 160686 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 797403 -> 797677 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243666 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  compile_and_test.sh                               |   6 ++
+|  dry.pdf                                           | Bin 0 -> 1156463 bytes
+|  12 files changed, 60 insertions(+), 32 deletions(-)
+| 
+* commit b0b7618fbc533233bea2287db9aa6a17f673d9e3
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Fri Aug 16 21:51:35 2024 +0300
+| 
+|     correcting warrior combatpower
+| 
+|  Events/Encounter.cpp                              |   9 +-
+|  MatamStoryTest                                    | Bin 1474288 -> 1400744 bytes
+|  TechnionMatam                                     |   2 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 94248 -> 96156 bytes
+|  cmake-build-debug/.ninja_log                      |   6 +
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160356 -> 160686 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  test_results.html                                 | 434 +++++++++++++++++++-
+|  9 files changed, 449 insertions(+), 6 deletions(-)
+| 
+* commit 1ebb31e6fe0adcf0fcf2080f1fe9df91bd273647
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:52:00 2024 +0300
+| 
+|     adding GameIsOver and Play member fucntions
+| 
+|  cmake-build-debug/Testing/Temporary/LastTest.log | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit b2cb1b6fc5c4000b9facfdc2b365054716c3847f
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:51:03 2024 +0300
+| 
+|     adding getEvents and GetPlayers
+| 
+|  cmake-build-debug/.ninja_deps                    | Bin 93472 -> 94248 bytes
+|  cmake-build-debug/.ninja_log                     |   2 ++
+|  cmake-build-debug/HW4.exe                        | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log |   4 ++--
+|  4 files changed, 4 insertions(+), 2 deletions(-)
+| 
+* commit 4d034adeee7eda41f94e4437c6bec985c1789254
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:49:46 2024 +0300
+| 
+|     adding playTurn, playRound
+| 
+|  MatamStory.cpp | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+| 
+* commit bcb7336ca1b27b4d8d56a2cb320d1ce314a80b4f
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:48:40 2024 +0300
+| 
+|     adding matamaStory members
+| 
+|  MatamStory.h                                      |  59 ++++++++++----------
+|  Players/PlayerFactory.h                           |   2 -
+|  cmake-build-debug/.ninja_deps                     | Bin 91344 -> 93472 bytes
+|  cmake-build-debug/.ninja_log                      |   4 ++
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 797407 -> 797403 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 579985 -> 579985 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj | Bin 183110 -> 183110 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  9 files changed, 35 insertions(+), 34 deletions(-)
+| 
+* commit 6b4b97c43acb83d1f598b14521a9ef082cdb331a
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:45:50 2024 +0300
+| 
+|     adding playerFactory
+| 
+|  Players/PlayerFactory.cpp                         |   8 ++++----
+|  cmake-build-debug/.ninja_deps                     | Bin 90756 -> 91344 bytes
+|  cmake-build-debug/.ninja_log                      |   2 ++
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 579973 -> 579985 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 ++--
+|  6 files changed, 8 insertions(+), 6 deletions(-)
+| 
+* commit 9db09df2eb30824be47742ecbc5a8fbab6e838f7
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:44:31 2024 +0300
+| 
+|     adding EventFactory
+| 
+|  Events/EventFactory.cpp                           |   1 -
+|  Events/EventFactory.h                             |   4 +---
+|  cmake-build-debug/.ninja_deps                     | Bin 89336 -> 90756 bytes
+|  cmake-build-debug/.ninja_log                      |   3 +++
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 806242 -> 806242 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 797407 -> 797407 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 ++--
+|  8 files changed, 6 insertions(+), 6 deletions(-)
+| 
+* commit 7cc5802695736559d32ed4c439ea6e8e51b5d2f0
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:42:16 2024 +0300
+| 
+|     adding SpecialEvent member fucntions
+| 
+|  cmake-build-debug/Testing/Temporary/LastTest.log | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit fec3e0705957e2469b3ab6d48a01a884dc9220a6
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:41:08 2024 +0300
+| 
+|     adding Encounter member fucntions
+| 
+|  Events/Encounter.h                                |  27 ++++++++++----------
+|  cmake-build-debug/.ninja_deps                     | Bin 86156 -> 89336 bytes
+|  cmake-build-debug/.ninja_log                      |   7 +++++
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160356 -> 160356 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 806242 -> 806242 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +--
+|  7 files changed, 22 insertions(+), 16 deletions(-)
+| 
+* commit 5adb105aa1efc6f6ccd27552ec5fab0ea4a4c8c1
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:38:27 2024 +0300
+| 
+|     adding Event functions and member fucnctions
+| 
+|  Events/Event.h                                    |  11 +++++------
+|  cmake-build-debug/.ninja_deps                     | Bin 81468 -> 86156 bytes
+|  cmake-build-debug/.ninja_log                      |   8 ++++++++
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160352 -> 160356 bytes
+|  .../CMakeFiles/HW4.dir/Events/Event.cpp.obj       | Bin 69862 -> 69866 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 806238 -> 806242 bytes
+|  .../HW4.dir/Events/SpecialEvent.cpp.obj           | Bin 82067 -> 82071 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243154 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 ++--
+|  9 files changed, 15 insertions(+), 8 deletions(-)
+| 
+* commit 901eeb1825617e917e009de3ac00f870972e7312
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:37:14 2024 +0300
+| 
+|     adding job fucntions and member functions
+| 
+|  Players/Job.h                                     |   9 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 75000 -> 81468 bytes
+|  cmake-build-debug/.ninja_log                      | 119 +++-----------------
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160348 -> 160352 bytes
+|  .../CMakeFiles/HW4.dir/Events/Event.cpp.obj       | Bin 69894 -> 69862 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 806270 -> 806238 bytes
+|  .../HW4.dir/Events/SpecialEvent.cpp.obj           | Bin 82063 -> 82067 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 797435 -> 797407 bytes
+|  .../CMakeFiles/HW4.dir/Players/Character.cpp.obj  | Bin 93294 -> 93302 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     | Bin 348573 -> 348581 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 580005 -> 579973 bytes
+|  .../CMakeFiles/HW4.dir/Utilities.cpp.obj          | Bin 111550 -> 111558 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj | Bin 183106 -> 183110 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243666 -> 2243154 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  15 files changed, 25 insertions(+), 107 deletions(-)
+| 
+* commit 21ed715c989e5365b664c601f6056ca8d371d106
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:36:04 2024 +0300
+| 
+|     adding character member functions
+| 
+|  Players/Character.cpp                             |   2 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 55596 -> 75000 bytes
+|  cmake-build-debug/.ninja_log                      |  32 ++++++++++++++++++++
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     | Bin 348573 -> 348573 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243666 -> 2243666 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +--
+|  6 files changed, 35 insertions(+), 3 deletions(-)
+| 
+* commit b6297937d6e8f912f49b2744a378cc5d1a30bdd3
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 13 22:33:11 2024 +0300
+| 
+|     adding player member fucntions
+| 
+|  Players/Player.cpp                                |   1 -
+|  cmake-build-debug/.ninja_deps                     | Bin 49128 -> 55596 bytes
+|  cmake-build-debug/.ninja_log                      |  11 +++++++++++
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 160372 -> 160348 bytes
+|  .../CMakeFiles/HW4.dir/Events/Event.cpp.obj       | Bin 69890 -> 69894 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 806270 -> 806270 bytes
+|  .../HW4.dir/Events/SpecialEvent.cpp.obj           | Bin 82059 -> 82063 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 797431 -> 797435 bytes
+|  .../CMakeFiles/HW4.dir/Players/Character.cpp.obj  | Bin 93290 -> 93294 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     | Bin 348597 -> 348573 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 580025 -> 580005 bytes
+|  .../CMakeFiles/HW4.dir/Utilities.cpp.obj          | Bin 111546 -> 111550 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj | Bin 183126 -> 183106 bytes
+|  cmake-build-debug/HW4.exe                         | Bin 2243666 -> 2243666 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 ++--
+|  15 files changed, 13 insertions(+), 3 deletions(-)
+| 
+* commit 8111d720e11635bd2e61edbd896ea0ee02cc698c
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Mon Aug 12 20:22:43 2024 +0300
+| 
+|     adding player members
+| 
+|  Players/Player.h | 21 ++++++++++-----------
+|  1 file changed, 10 insertions(+), 11 deletions(-)
+| 
+* commit 7a68c89e5b72d6ecff2dd47cdffb0eb40cbb6a52
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Mon Aug 12 20:21:20 2024 +0300
+| 
+|     adding idea folder
+| 
+|  .idea/.gitignore  |   8 ++++
+|  .idea/HW4.iml     |   2 +
+|  .idea/editor.xml  | 103 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  .idea/misc.xml    |   7 ++++
+|  .idea/modules.xml |   8 ++++
+|  .idea/vcs.xml     |   8 ++++
+|  6 files changed, 136 insertions(+)
+| 
+* commit 54a5cdb12f78980e871b1bdccdb937f5b79a7094
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Mon Aug 12 20:19:12 2024 +0300
+| 
+|     adding player factory
+| 
+|  .gitmodules                                       |   6 +
+|  Events/Encounter.cpp                              |  16 +-
+|  Events/EventFactory.cpp                           |  47 ++--
+|  Events/SpecialEvent.h                             |   2 +-
+|  MatamGenericTester                                |   1 +
+|  MatamStory.cpp                                    | 248 +++++++++++---------
+|  MatamStory.h                                      |   6 +-
+|  MatamStoryTest                                    | Bin 0 -> 1474288 bytes
+|  Players/Player.cpp                                |  19 +-
+|  Players/PlayerFactory.cpp                         |  57 ++---
+|  TechnionMatam                                     |   1 +
+|  add-testing-tools.sh                              |   2 +
+|  clean-git.sh                                      |  36 +++
+|  ...d6.json => cache-v2-bf1b3965e2e61b4c7e33.json} |   2 +-
+|  ...9.json => index-2024-08-09T19-58-47-0466.json} |   4 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 68556 -> 49128 bytes
+|  cmake-build-debug/.ninja_log                      |  64 ++++-
+|  cmake-build-debug/CMakeCache.txt                  |   2 +-
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 149927 -> 160372 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 792279 -> 806270 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 792017 -> 797431 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     | Bin 360627 -> 348597 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 736171 -> 580025 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj | Bin 183068 -> 183126 bytes
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |   2 +-
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   4 +-
+|  cmake-build-debug/HW4.exe                         | Bin 2341918 -> 2243666 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  test_results.html                                 | 158 +++++++++++++
+|  29 files changed, 482 insertions(+), 199 deletions(-)
+| 
+* commit 1247d53cc680bf5601e2922a128536c294cb5d90
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Thu Aug 8 16:15:46 2024 +0300
+| 
+|     adding events member functions
+| 
+|  CMakeLists.txt                                    |   5 +-
+|  Events/Encounter.h                                |   2 +-
+|  Events/Event.cpp                                  |   5 +-
+|  Events/Event.h                                    |   3 +-
+|  Events/EventFactory.h                             |   2 +-
+|  MatamStory.cpp                                    |  35 +++++----
+|  MatamStory.h                                      |   1 +
+|  Players/Job.cpp                                   |   1 -
+|  Players/Player.cpp                                |  12 ++--
+|  Players/Player.h                                  |   2 +-
+|  ...33.json => cache-v2-51f57db52581dc8d20d6.json} |   2 +-
+|  ...son => codemodel-v2-4c03d423f3898da6d184.json} |   2 +-
+|  ...5.json => index-2024-08-08T12-58-39-0879.json} |   8 +--
+|  ...=> target-HW4-Debug-b35dc141322f714911af.json} |  54 +++++++-------
+|  cmake-build-debug/.ninja_deps                     | Bin 64260 -> 68556 bytes
+|  cmake-build-debug/.ninja_log                      |  76 ++++----------------
+|  cmake-build-debug/CMakeCache.txt                  |   2 +-
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   | Bin 149911 -> 149927 bytes
+|  .../CMakeFiles/HW4.dir/Events/Event.cpp.obj       | Bin 69894 -> 69890 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           | Bin 792263 -> 792279 bytes
+|  .../HW4.dir/Events/SpecialEvent.cpp.obj           | Bin 82039 -> 82059 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         | Bin 791714 -> 792017 bytes
+|  .../CMakeFiles/HW4.dir/Players/Character.cpp.obj  | Bin 93274 -> 93290 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     | Bin 360611 -> 360627 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         | Bin 736151 -> 736171 bytes
+|  .../CMakeFiles/HW4.dir/Utilities.cpp.obj          | Bin 111530 -> 111546 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj | Bin 183052 -> 183068 bytes
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |   2 +-
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   4 +-
+|  cmake-build-debug/HW4.exe                         | Bin 2341110 -> 2341918 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/build.ninja                     |  30 ++++----
+|  test1.out                                         |   0
+|  33 files changed, 105 insertions(+), 147 deletions(-)
+| 
+* commit bd3832c2caf8426ab2b711f82af08227a202ef31
+| Author: Layan176 <layanfa002@gmail.com>
+| Date:   Tue Aug 6 23:21:11 2024 +0300
+| 
+|     adding Character and job classes
+| 
+|  CMakeLists.txt                                    |   23 +
+|  Events/Encounter.cpp                              |   38 +
+|  Events/Encounter.h                                |   71 +
+|  Events/Event.cpp                                  |    4 +
+|  Events/Event.h                                    |   21 +-
+|  Events/EventFactory.cpp                           |   48 +
+|  Events/EventFactory.h                             |   19 +
+|  Events/SpecialEvent.cpp                           |   19 +
+|  Events/SpecialEvent.h                             |   31 +
+|  MatamStory.cpp                                    |  214 ++-
+|  MatamStory.h                                      |   13 +-
+|  Players/Character.cpp                             |   35 +
+|  Players/Character.h                               |   46 +
+|  Players/Job.cpp                                   |    1 +
+|  Players/Job.h                                     |   48 +
+|  Players/Player.cpp                                |   69 +
+|  Players/Player.h                                  |   41 +-
+|  Players/PlayerFactory.cpp                         |   48 +
+|  Players/PlayerFactory.h                           |   18 +
+|  cmake-build-debug/.cmake/api/v1/query/cache-v2    |    0
+|  .../.cmake/api/v1/query/cmakeFiles-v1             |    0
+|  .../.cmake/api/v1/query/codemodel-v2              |    0
+|  .../.cmake/api/v1/query/toolchains-v1             |    0
+|  .../v1/reply/cache-v2-bf1b3965e2e61b4c7e33.json   | 1327 +++++++++++++++++++
+|  .../reply/cmakeFiles-v1-80398c79002b70a6f17e.json |  165 +++
+|  .../reply/codemodel-v2-0fdef25a0dc44f38acb6.json  |   60 +
+|  .../directory-.-Debug-d0094a50bb2071803777.json   |   14 +
+|  .../v1/reply/index-2024-08-06T19-56-21-0035.json  |  108 ++
+|  .../target-HW4-Debug-737fbf4cfd199916f89e.json    |  222 ++++
+|  .../reply/toolchains-v1-e60ebe5105168df5c89c.json |   93 ++
+|  cmake-build-debug/.ninja_deps                     |  Bin 0 -> 64260 bytes
+|  cmake-build-debug/.ninja_log                      |   65 +
+|  cmake-build-debug/CMakeCache.txt                  |  415 ++++++
+|  .../CMakeFiles/3.28.1/CMakeCCompiler.cmake        |   74 ++
+|  .../CMakeFiles/3.28.1/CMakeCXXCompiler.cmake      |   85 ++
+|  .../3.28.1/CMakeDetermineCompilerABI_C.bin        |  Bin 0 -> 43069 bytes
+|  .../3.28.1/CMakeDetermineCompilerABI_CXX.bin      |  Bin 0 -> 43088 bytes
+|  .../CMakeFiles/3.28.1/CMakeRCCompiler.cmake       |    6 +
+|  .../CMakeFiles/3.28.1/CMakeSystem.cmake           |   15 +
+|  .../3.28.1/CompilerIdC/CMakeCCompilerId.c         |  880 ++++++++++++
+|  .../CMakeFiles/3.28.1/CompilerIdC/a.exe           |  Bin 0 -> 43144 bytes
+|  .../3.28.1/CompilerIdCXX/CMakeCXXCompilerId.cpp   |  869 ++++++++++++
+|  .../CMakeFiles/3.28.1/CompilerIdCXX/a.exe         |  Bin 0 -> 43172 bytes
+|  .../CMakeFiles/CMakeConfigureLog.yaml             |  417 ++++++
+|  .../CMakeFiles/HW4.dir/Events/Encounter.cpp.obj   |  Bin 0 -> 149911 bytes
+|  .../CMakeFiles/HW4.dir/Events/Event.cpp.obj       |  Bin 0 -> 69894 bytes
+|  .../HW4.dir/Events/EventFactory.cpp.obj           |  Bin 0 -> 792263 bytes
+|  .../HW4.dir/Events/SpecialEvent.cpp.obj           |  Bin 0 -> 82039 bytes
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         |  Bin 0 -> 791714 bytes
+|  .../CMakeFiles/HW4.dir/Players/Character.cpp.obj  |  Bin 0 -> 93274 bytes
+|  .../CMakeFiles/HW4.dir/Players/Job.cpp.obj        |  Bin 0 -> 741 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     |  Bin 0 -> 360611 bytes
+|  .../HW4.dir/Players/PlayerFactory.cpp.obj         |  Bin 0 -> 736151 bytes
+|  .../CMakeFiles/HW4.dir/Utilities.cpp.obj          |  Bin 0 -> 111530 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj |  Bin 0 -> 183052 bytes
+|  .../CMakeFiles/TargetDirectories.txt              |    3 +
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |    4 +
+|  .../CMakeFiles/clion-environment.txt              |    5 +
+|  cmake-build-debug/CMakeFiles/cmake.check_cache    |    1 +
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   64 +
+|  cmake-build-debug/HW4.exe                         |  Bin 0 -> 2341110 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    3 +
+|  cmake-build-debug/build.ninja                     |  206 +++
+|  cmake-build-debug/cmake_install.cmake             |   49 +
+|  64 files changed, 5945 insertions(+), 12 deletions(-)
+| 
+* commit ba0b3459f0f82d3907c4e294da2bff54ad0ad1c3
+| Author: Adi Harif <adi.harif@campus.technion.ac.il>
+| Date:   Sun Aug 4 19:43:54 2024 +0300
+| 
+|     [bugfix] Changes utilities function to iterate over size_t variable instead of unsigned int
+| 
+|  Utilities.cpp | 6 +++---
+|  1 file changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit ecc9258c6f2aa2c9c091a7738587e206586a1c14
+| Author: Adi Harif <adi.harif@campus.technion.ac.il>
+| Date:   Sun Aug 4 08:16:59 2024 +0300
+| 
+|     [format] Changes tests eol format to LF instead of CRLF
+| 
+|  tests/test1.events  | 8 ++++----
+|  tests/test1.players | 4 ++--
+|  tests/test2.events  | 6 +++---
+|  tests/test2.players | 4 ++--
+|  tests/test3.events  | 8 ++++----
+|  tests/test3.players | 2 +-
+|  6 files changed, 16 insertions(+), 16 deletions(-)
+|   
+| * commit 9b57ae8495a486158fbcc3d141c2771206291b57
+|/  Author: Layan176 <layanfa002@gmail.com>
+|   Date:   Sat Aug 3 23:06:06 2024 +0300
+|   
+|       adding classes
+|   
+|    CMakeLists.txt                                   |   42 +
+|    Events/Balrog.cpp                                |    9 +
+|    Events/Balrog.h                                  |   16 +
+|    Events/Encounter.cpp                             |   33 +
+|    Events/Encounter.h                               |   22 +
+|    Events/Event.cpp                                 |    2 +
+|    Events/Event.h                                   |    5 +-
+|    Events/Pack.cpp                                  |   34 +
+|    Events/Pack.h                                    |   17 +
+|    Events/PotionsMerchant.cpp                       |    9 +
+|    Events/PotionsMerchant.h                         |   11 +
+|    Events/Slime.cpp                                 |    6 +
+|    Events/Slime.h                                   |   15 +
+|    Events/Snail.cpp                                 |    9 +
+|    Events/Snail.h                                   |   15 +
+|    Events/SolarEclips.cpp                           |   16 +
+|    Events/SolarEclips.h                             |   14 +
+|    Events/SpecialEvent.cpp                          |    3 +
+|    Events/SpecialEvent.h                            |    8 +
+|    MatamStory.cpp                                   |   44 +-
+|    MatamStory.h                                     |    4 +-
+|    Players/Archer.cpp                               |    1 +
+|    Players/Archer.h                                 |    9 +
+|    Players/Character.cpp                            |    4 +
+|    Players/Character.h                              |   11 +
+|    Players/Job.cpp                                  |   27 +
+|    Players/Job.h                                    |   17 +
+|    Players/Magician.cpp                             |    2 +
+|    Players/Magician.h                               |    8 +
+|    Players/Player.cpp                               |   67 +
+|    Players/Player.h                                 |   39 +-
+|    Players/Responsible.cpp                          |   12 +
+|    Players/Responsible.h                            |   11 +
+|    Players/RiskTaking.cpp                           |   11 +
+|    Players/RiskTaking.h                             |    8 +
+|    Players/Warrior.cpp                              |    3 +
+|    Players/Warrior.h                                |   10 +
+|    cmake-build-debug/.cmake/api/v1/query/cache-v2   |    0
+|    .../.cmake/api/v1/query/cmakeFiles-v1            |    0
+|    .../.cmake/api/v1/query/codemodel-v2             |    0
+|    .../.cmake/api/v1/query/toolchains-v1            |    0
+|    .../v1/reply/cache-v2-88b80a12be5bcabeee5f.json  | 1327 ++++++++++++++++++
+|    .../cmakeFiles-v1-9e206aac6136e8bca690.json      |  165 +++
+|    .../reply/codemodel-v2-ea8b60635e9317514ac4.json |   60 +
+|    .../directory-.-Debug-d0094a50bb2071803777.json  |   14 +
+|    .../v1/reply/index-2024-08-03T10-13-05-0764.json |  108 ++
+|    .../target-HW4-Debug-2f5e2ab56e816670e619.json   |  354 +++++
+|    .../toolchains-v1-e60ebe5105168df5c89c.json      |   93 ++
+|    cmake-build-debug/CMakeCache.txt                 |  415 ++++++
+|    .../CMakeFiles/3.28.1/CMakeCCompiler.cmake       |   74 +
+|    .../CMakeFiles/3.28.1/CMakeCXXCompiler.cmake     |   85 ++
+|    .../3.28.1/CMakeDetermineCompilerABI_C.bin       |  Bin 0 -> 43069 bytes
+|    .../3.28.1/CMakeDetermineCompilerABI_CXX.bin     |  Bin 0 -> 43088 bytes
+|    .../CMakeFiles/3.28.1/CMakeRCCompiler.cmake      |    6 +
+|    .../CMakeFiles/3.28.1/CMakeSystem.cmake          |   15 +
+|    .../3.28.1/CompilerIdC/CMakeCCompilerId.c        |  880 ++++++++++++
+|    .../CMakeFiles/3.28.1/CompilerIdC/a.exe          |  Bin 0 -> 43144 bytes
+|    .../3.28.1/CompilerIdCXX/CMakeCXXCompilerId.cpp  |  869 ++++++++++++
+|    .../CMakeFiles/3.28.1/CompilerIdCXX/a.exe        |  Bin 0 -> 43172 bytes
+|    .../CMakeFiles/CMakeConfigureLog.yaml            |  417 ++++++
+|    .../CMakeFiles/TargetDirectories.txt             |    3 +
+|    cmake-build-debug/CMakeFiles/clion-Debug-log.txt |    4 +
+|    .../CMakeFiles/clion-environment.txt             |    5 +
+|    cmake-build-debug/CMakeFiles/cmake.check_cache   |    1 +
+|    cmake-build-debug/CMakeFiles/rules.ninja         |   64 +
+|    cmake-build-debug/Testing/Temporary/LastTest.log |    3 +
+|    cmake-build-debug/build.ninja                    |  260 ++++
+|    cmake-build-debug/cmake_install.cmake            |   49 +
+|    68 files changed, 5833 insertions(+), 12 deletions(-)
+| 
+* commit 6d0b58bcecef6fc2291c09f654a978cc382c3e31
+| Author: AdiHarif <adi.harif@campus.technion.ac.il>
+| Date:   Mon Jul 29 21:47:45 2024 +0300
+| 
+|     Adds supplied files
+| 
+|  Events/Event.h       |  14 +++++
+|  MatamStory.cpp       |  74 +++++++++++++++++++++++++
+|  MatamStory.h         |  55 +++++++++++++++++++
+|  Players/Player.h     |  51 +++++++++++++++++
+|  Utilities.cpp        | 117 +++++++++++++++++++++++++++++++++++++++
+|  Utilities.h          | 146 +++++++++++++++++++++++++++++++++++++++++++++++++
+|  main.cpp             |  40 ++++++++++++++
+|  tests/test1.events   |   5 ++
+|  tests/test1.expected |  96 ++++++++++++++++++++++++++++++++
+|  tests/test1.players  |   3 +
+|  tests/test2.events   |   4 ++
+|  tests/test2.expected |   1 +
+|  tests/test2.players  |   3 +
+|  tests/test3.events   |   5 ++
+|  tests/test3.expected |   1 +
+|  tests/test3.players  |   2 +
+|  16 files changed, 617 insertions(+)
+| 
+* commit beadb33ed4c7dd2da9d4078b9de6253232c67a46
+  Author: AdiHarif <adi.harif@campus.technion.ac.il>
+  Date:   Mon Jul 29 21:46:59 2024 +0300
+  
+      Initial Commit - Adds README.md file
+  
+   README.md | 7 +++++++
+   1 file changed, 7 insertions(+)
