@@ -1,12 +1,26 @@
 #include "EventFactory.h"
 #include <memory>
 #include "SpecialEvent.h"
-#include "Event.h"
 #include "Encounter.h"
 #include <vector>
+#include <map>
+#include <functional>
 
 std::shared_ptr<Event> EventFactory::createEvent(const std::vector<std::string>& inputLines) {
-    // Check if the event type is Pack
+    // Map for creating specific Encounter events
+    static const std::map<std::string, std::function<std::shared_ptr<Encounter>()>> encounterMap = {
+        {"Balrog", []() { return std::make_shared<Balrog>(); }},
+        {"Slime", []() { return std::make_shared<Slime>(); }},
+        {"Snail", []() { return std::make_shared<Snail>(); }}
+    };
+
+    // Map for creating specific SpecialEvent events
+    static const std::map<std::string, std::function<std::shared_ptr<Event>()>> specialEventMap = {
+        {"SolarEclipse", []() { return std::make_shared<SolarEclips>(); }},
+        {"PotionsMerchant", []() { return std::make_shared<PotionsMerchant>(); }}
+    };
+
+    // Handle "Pack" event
     if (inputLines[0] == "Pack") {
         int quantity = std::stoi(inputLines[1]);
         std::vector<Encounter> encounters;
@@ -14,33 +28,26 @@ std::shared_ptr<Event> EventFactory::createEvent(const std::vector<std::string>&
         // Create encounters based on the input provided
         for (size_t index = 2; index < inputLines.size(); ++index) {
             const auto& creature = inputLines[index];
-            if (creature == "Balrog") {
-                encounters.emplace_back(Balrog());
-            } else if (creature == "Slime") {
-                encounters.emplace_back(Slime());
-            } else if (creature == "Snail") {
-                encounters.emplace_back(Snail());
+            auto encounterIter = encounterMap.find(creature);
+            if (encounterIter != encounterMap.end()) {
+                encounters.push_back(*encounterIter->second());
+            } else {
+                throw InvalidEvents();
             }
         }
 
         return std::make_shared<Pack>(encounters, quantity);
     }
 
-    // Create specific event types based on the input
-    if (inputLines[0] == "Balrog") {
-        return std::make_shared<Balrog>();
+    // Create specific events
+    auto encounterIter = encounterMap.find(inputLines[0]);
+    if (encounterIter != encounterMap.end()) {
+        return encounterIter->second();
     }
-    if (inputLines[0] == "Snail") {
-        return std::make_shared<Snail>();
-    }
-    if (inputLines[0] == "Slime") {
-        return std::make_shared<Slime>();
-    }
-    if (inputLines[0] == "SolarEclipse") {
-        return std::make_shared<SolarEclips>();
-    }
-    if (inputLines[0] == "PotionsMerchant") {
-        return std::make_shared<PotionsMerchant>();
+
+    auto specialEventIter = specialEventMap.find(inputLines[0]);
+    if (specialEventIter != specialEventMap.end()) {
+        return specialEventIter->second();
     }
 
     // Throw an exception for invalid event types
