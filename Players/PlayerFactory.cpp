@@ -1,36 +1,41 @@
 #include "PlayerFactory.h"
 #include <memory>
+#include <map>
+#include <functional>
 
 std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& playerName,
-                    const std::string& playerJob, const std::string& playerCharacter) {
+                                                    const std::string& playerJob,
+                                                    const std::string& playerCharacter) {
     // Validate player name length
     if (playerName.length() < 3 || playerName.length() > 15) {
         throw InvalidPlayers();
     }
 
-    // Define unique pointers for Job and Character
-    std::unique_ptr<Job> jobPtr;
-    std::unique_ptr<Character> characterPtr;
+    // Maps to create Job and Character instances
+    static const std::map<std::string, std::function<std::unique_ptr<Job>()>> jobMap = {
+        {"Warrior", []() { return std::make_unique<Warrior>(); }},
+        {"Archer", []() { return std::make_unique<Archer>(); }},
+        {"Magician", []() { return std::make_unique<Magician>(); }}
+    };
 
-    // Determine the job type
-    if (playerJob == "Warrior") {
-        jobPtr = std::make_unique<Warrior>();
-    } else if (playerJob == "Archer") {
-        jobPtr = std::make_unique<Archer>();
-    } else if (playerJob == "Magician") {
-        jobPtr = std::make_unique<Magician>();
-    } else {
+    static const std::map<std::string, std::function<std::unique_ptr<Character>()>> characterMap = {
+        {"RiskTaking", []() { return std::make_unique<RiskTaking>(); }},
+        {"Responsible", []() { return std::make_unique<Responsible>(); }}
+    };
+
+    // Find and create Job
+    auto jobIter = jobMap.find(playerJob);
+    if (jobIter == jobMap.end()) {
         throw InvalidPlayers();
     }
+    std::unique_ptr<Job> jobPtr = jobIter->second();
 
-    // Determine the character type
-    if (playerCharacter == "RiskTaking") {
-        characterPtr = std::make_unique<RiskTaking>();
-    } else if (playerCharacter == "Responsible") {
-        characterPtr = std::make_unique<Responsible>();
-    } else {
+    // Find and create Character
+    auto characterIter = characterMap.find(playerCharacter);
+    if (characterIter == characterMap.end()) {
         throw InvalidPlayers();
     }
+    std::unique_ptr<Character> characterPtr = characterIter->second();
 
     // Create and return the Player object
     return std::make_shared<Player>(playerName, std::move(jobPtr), std::move(characterPtr));
