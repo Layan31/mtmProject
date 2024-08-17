@@ -113,8 +113,9 @@ void getPack(const std::vector<std::string>& source, std::vector<std::string>& d
 
         std::string currentElement = source[currentIndex];
         if (currentElement == "Pack") {
-            getPack(source, destination, currentIndex); // Recursively handle nested "Pack" entries
-        } else if (currentElement == "Balrog" || currentElement == "Slime" || currentElement == "Snail") {
+            getPack(source, destination, currentIndex);
+        } else if (currentElement == "Balrog" || currentElement == "Slime" ||
+            currentElement == "Snail") {
             destination.push_back(currentElement); // Add the event to the destination
             ++currentIndex;
         } else {
