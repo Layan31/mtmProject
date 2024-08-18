@@ -26,6 +26,9 @@ public:
     Magician() {
         isMagical = true;
     }
+
+    virtual ~Magician() = default;
+
     std::string getJobName() const override {
         return "Magician";
     }
@@ -33,6 +36,9 @@ public:
 
 class Archer : public Job {
 public:
+    virtual ~Archer() = default;
+
+
     std::string getJobName() const override {
         return "Archer";
     }
@@ -43,6 +49,10 @@ public:
     Warrior() {
         closeEncounter = true;
     }
+
+    virtual ~Warrior() = default;
+
+
     std::string getJobName() const override {
         return "Warrior";
     }

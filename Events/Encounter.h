@@ -16,6 +16,8 @@ public:
                 Event(name,loot,combatPower,damage){}
 
 
+    virtual  ~Encounter() = default;
+
     string getDescription() const override;
 
     string playTurn(Player& player) override;
@@ -25,6 +27,8 @@ class Balrog : public Encounter {
 public:
     Balrog() : Encounter("Balrog", 15, 100, 9001) {}
 
+    virtual ~Balrog() = default;
+
     string getDescription() const override;
 };
 
@@ -32,12 +36,16 @@ class Slime : public Encounter {
 public:
     Slime() : Encounter("Slime", 12, 5, 25) {}
 
+    virtual ~Slime() = default;
+
     string getDescription() const override;
 };
 
 class Snail : public Encounter {
 public:
     Snail() : Encounter("Snail", 5, 2, 10) {}
+
+    virtual ~Snail() = default;
 
     string getDescription() const override;
 };
@@ -61,6 +69,7 @@ public:
         encounters = pack1;
     }
 
+    virtual ~Pack() = default;
 
     string getDescription() const override;
 

@@ -8,7 +8,7 @@ using std::string;
 
 class Character {
 public:
-    virtual ~Character();
+    virtual ~Character() = default;
 
     /**
      * Simulates a turn with a player
@@ -28,9 +28,10 @@ public:
 
 
 class Responsible : public Character {
-public:
 
-    ~Responsible() override;
+public:
+    virtual ~Responsible() = default;
+
     int playTurnWithPM(Player &pl) override;
 
     string getCharacterType() const override;
@@ -39,7 +40,8 @@ public:
 
 class RiskTaking : public Character {
 public:
-    ~RiskTaking() override;
+    virtual ~RiskTaking() = default;
+
     int playTurnWithPM(Player &pl) override;
 
     string getCharacterType() const override;

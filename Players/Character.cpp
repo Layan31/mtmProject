@@ -1,11 +1,7 @@
 #include "Character.h"
 #include <algorithm> //For std::min
 
-Character::~Character() = default;
 
-Responsible::~Responsible() = default;
-
-RiskTaking::~RiskTaking() = default;
 
 int Responsible::playTurnWithPM(Player &pl) {
     int countPotions = 0;
