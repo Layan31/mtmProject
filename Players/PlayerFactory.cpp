@@ -1,7 +1,17 @@
 #include "PlayerFactory.h"
 #include <memory>
-#include <map>
-#include <functional>
+
+// Maps to create Job and Character instances
+const std::map<std::string, std::function<std::unique_ptr<Job>()>> PlayerFactory::jobMap = {
+        {"Warrior", []() { return std::make_unique<Warrior>(); }},
+        {"Archer", []() { return std::make_unique<Archer>(); }},
+        {"Magician", []() { return std::make_unique<Magician>(); }}
+};
+
+const std::map<std::string, std::function<std::unique_ptr<Character>()>> PlayerFactory::characterMap = {
+        {"RiskTaking", []() { return std::make_unique<RiskTaking>(); }},
+        {"Responsible", []() { return std::make_unique<Responsible>(); }}
+};
 
 std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& playerName,
                                                     const std::string& playerJob,
@@ -10,18 +20,6 @@ std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& playerNam
     if (playerName.length() < 3 || playerName.length() > 15) {
         throw InvalidPlayers();
     }
-
-    // Maps to create Job and Character instances
-    static const std::map<std::string, std::function<std::unique_ptr<Job>()>> jobMap = {
-        {"Warrior", []() { return std::make_unique<Warrior>(); }},
-        {"Archer", []() { return std::make_unique<Archer>(); }},
-        {"Magician", []() { return std::make_unique<Magician>(); }}
-    };
-
-    static const std::map<std::string, std::function<std::unique_ptr<Character>()>> characterMap = {
-        {"RiskTaking", []() { return std::make_unique<RiskTaking>(); }},
-        {"Responsible", []() { return std::make_unique<Responsible>(); }}
-    };
 
     // Find and create Job
     auto jobIter = jobMap.find(playerJob);
