@@ -1,3 +1,3 @@
-C:/Users/layan/OneDrive/Desktop/cs/HW4/cmake-build-debug/CMakeFiles/HW4.dir
-C:/Users/layan/OneDrive/Desktop/cs/HW4/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/layan/OneDrive/Desktop/cs/HW4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/layan/OneDrive/Desktop/cs/Other/matam/HW4Updated/mtmProject/cmake-build-debug/CMakeFiles/HW4.dir
+C:/Users/layan/OneDrive/Desktop/cs/Other/matam/HW4Updated/mtmProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/layan/OneDrive/Desktop/cs/Other/matam/HW4Updated/mtmProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir

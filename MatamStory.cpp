@@ -217,7 +217,6 @@ MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) 
     /*============================================*/
 
 
-    this->m_turnIndex = 1;
 }
 
 void MatamStory::playTurn(Player& player) {
