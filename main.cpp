@@ -13,7 +13,7 @@ using std::ifstream;
 
 int main(int argc, char** argv) {
 
-    int i = 0;
+    int i = 1;
 
     if (argc != 3) {
         cout <<  "Usage: MatamStory <events_file_path> <players_file_path>" << endl;
